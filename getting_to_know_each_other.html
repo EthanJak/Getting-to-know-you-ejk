@@ -1,56 +1,127 @@
 <!DOCTYPE html>
-<html>
+<html lang='en'>
 <head>
-  <style>
-    img {
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    </style>
-
-<title>Ethan Jakubowski</title>
+    <meta charset='UTF-8'>
+    <title>MatchMaker</title>
 </head>
+
 <body style="background-color:powderblue;"></body>
 <body>
+    <h1>MatchMaker</h1>
+    <p>Welcome to my MatchMaker! Please answer the statments bellow based on how much you agree with them in order to see if we
+      were ment to be ;).</p>
+    
+    <label>Dad jokes are funny</label>
 
-<h1 style="text-align: center;">Ethan Jakubowski</h1>
-<h2 style="text-align: center;">Introduction</h2>
+    <select id='q1'>
+      <option value='5'>Strongly Agree</option>
+      <option value='4'>Agree</option>
+      <option value='3'>Indifferent</option>
+      <option value='2'>Disagree</option>
+      <option value='1'>Strongly Disagree</option>
+    </select>
+    <br /><br />
 
-<p style="text-align: center;"><a href="ethangjakubowski@lewisu.edu">ethangjakubowski@lewisu.edu</a></p>
+    <label>Vanilla icecream is the best icecream</label>
 
-<p style="text-align: center;">Hi, Im Ethan Jakubowski and Im a biochemistry major at Lewis University. While Im a
-biochemistry major on paper I'm most likely going to be switching my major to mathematics this semester. I'm from Romeoville
-and live with my mom and brother only around ten minutes away from Lewis. I'm really excited for everything I'm going to 
-learn this year, and I can't believe it's already week five. </p>
+    <select id='q2'>
+      <option value='5'>Strongly Agree</option>
+      <option value='4'>Agree</option>
+      <option value='3'>Indifferent</option>
+      <option value='2'>Disagree</option>
+      <option value='1'>Strongly Disagree</option>
+    </select>
+    <br /><br />
 
-<h3 style="text-align: center;"></style><b>What I Hope to Learn From This Class</b></h3>
-<div style="width: 25%; margin-left: auto; margin-right: auto;">
-<ul style="text-align: center; list-style-type: square;">
-    <li style="text-align: center;">Learning about AI</li>
-    <li style="text-align: center;">Understanding coding languages</li>
-    <li style="text-align: center;">Learning more about how hardware makes computers work</li>
-</ul>
-</div>
+    <label>Blue is the best color</label>
 
-<h3 style="text-align: center;"><b>My Favorite Hobby</b></h3>
-<p>My favorite hobby is probably just playing videogames. I play a wide range of games, and recently I havent played as 
-much because of school but I played a lot over this last summer. Other than that I like hanging out with friends and 
-doing the same dumb things we always do.
-</p>
+    <select id='q3'>
+      <option value='10'>Strongly Agree</option>
+      <option value='8'>Agree</option>
+      <option value='6'>Indifferent</option>
+      <option value='4'>Disagree</option>
+      <option value='2'>Strongly Disagree</option>
+    </select>
+    <br /><br />
 
-<h3 style="text-align: center;">Great Inventions</h3>
-<div style="width: 25%; margin-left: auto; margin-right: auto;">
-<ul style="text-align: center; list-style-type:square;">
-    <li><a href="https://www.britannica.com/technology/computer/The-first-computer" target="_blank">The First Computer</a></li>
-    <li><a href="https://www.history.com/news/who-invented-the-internet" target="_blank">The Internet</a></li>
-    <li><a href="https://www.sciencemuseum.org.uk/objects-and-stories/invention-mobile-phones" target="_blank">Mobile Phones</a></li>
-  </ul>
-</div>
+    <label>English 1 and 2 were fun classes. </label>
 
-  <h3 style="text-align: center;"></style><b>Fun Facts</b></h3>
-  <p style="text-align: center;">I have bruise on my right arm that will never go away.</p>
+    <select id='q4'>
+      <option value='5'>Strongly Agree</option>
+      <option value='4'>Agree</option>
+      <option value='3'>Indifferent</option>
+      <option value='2'>Disagree</option>
+      <option value='1'>Strongly Disagree</option>
+    </select>
+    <br /><br />
 
-<img src="ethan.JPG" alt="Me" style="width:300px;height:350px;">
+    <label>Fall is my favorite season</label>
+
+    <select id='q5'>
+      <option value='5'>Strongly Agree</option>
+      <option value='4'>Agree</option>
+      <option value='3'>Indifferent</option>
+      <option value='2'>Disagree</option>
+      <option value='1'>Strongly Disagree</option>
+    </select>
+    <br /><br />
+
+    <br /><br /><br />
+    <button onclick='Calculate()'>Calculate Compatibility</button>
+
+    
+
+    <p id='Compatibility'></p>
+    <br />
+
+    <p id='EndRemark' ></p>
+
+
+
+    
+
+<script>
+console.log('Starting MatchMaker.')
+
+const DESIRED_RESPONCE = [
+    5,
+    4,
+    10,
+    1,
+    3,
+]
+
+const MAX_SCORE = 30
+
+function Calculate(){
+    console.log('Calculate()')
+
+    let question1Responce = document.getElementById('q1').selectedOptions[0].value;
+    let question2Responce = document.getElementById('q2').selectedOptions[0].value;
+    let question3Responce = document.getElementById('q3').selectedOptions[0].value;
+    let question4Responce = document.getElementById('q4').selectedOptions[0].value;
+    let question5Responce = document.getElementById('q5').selectedOptions[0].value;
+
+    let question1Compatibility = 5 - Math.abs(question1Responce - DESIRED_RESPONCE[0]);
+    let question2Compatibility = 5 - Math.abs(question2Responce - DESIRED_RESPONCE[1]);
+    let question3Compatibility = 10 - Math.abs(question3Responce - DESIRED_RESPONCE[2]);
+    let question4Compatibility = 5 - Math.abs(question4Responce - DESIRED_RESPONCE[3]);
+    let question5Compatibility = 5 - Math.abs(question5Responce - DESIRED_RESPONCE[4]);
+
+    console.log('C1=' + question1Compatibility);
+    console.log('C2=' + question2Compatibility);
+    console.log('C3=' + question3Compatibility);
+    console.log('C4=' + question4Compatibility);
+    console.log('C5=' + question5Compatibility);
+
+    let totalCompatibility = question1Compatibility + question2Compatibility + question3Compatibility + question4Compatibility + question5Compatibility;
+
+    totalCompatibility *= 100/MAX_SCORE;
+    totalCompatibility = Math.round(totalCompatibility);
+    console.log('Total c= '+totalCompatibility);
+
+    document.getElementById('Compatibility').innerHTML = 'Your Compatibility is: '+ totalCompatibility+'%';
+}
+</script>
 </body>
 </html>
